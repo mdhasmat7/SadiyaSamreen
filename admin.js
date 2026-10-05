@@ -30,7 +30,7 @@ async function load(){
   const item=el('div',undefined,'article-list-item');item.append(el('strong',a.title),el('small',a.status==='published'?'Published':'Draft'));
   const actions=el('div',undefined,'article-list-actions');const edit=el('button','Edit');edit.type='button';edit.setAttribute('aria-label','Edit '+a.title);edit.onclick=()=>editArticle(a);
   const remove=el('button','Delete','danger');remove.type='button';remove.setAttribute('aria-label','Delete '+a.title);remove.onclick=()=>deleteArticle(a,remove);
-  actions.append(edit,remove);if(a.status==='published'){const view=el('a','View','article-view');view.href='index.html?article='+encodeURIComponent(a.id);view.target='_blank';view.rel='noopener';actions.append(view);}
+  actions.append(edit,remove);if(a.status==='published'){const view=el('a','View','article-view');view.href='./?article='+encodeURIComponent(a.id);view.target='_blank';view.rel='noopener';actions.append(view);}
   item.append(actions);list.append(item);
  }
 }
