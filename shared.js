@@ -16,6 +16,7 @@ export function cover(article) {
   if(safeImage(article.cover_url)){const img=el('img',undefined,'cover');img.src=article.cover_url;img.alt='';img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>img.replaceWith(typeCover(article));return img;}
   return typeCover(article);
 }
-function typeCover(article){ const box=el('div',undefined,'cover type-cover');box.append(el('small','THE COMMON JORNAL / '+article.category),el('strong',article.title),el('small','A FRESH PERSPECTIVE'));return box; }
+function typeCover(article){ const box=el('div',undefined,'cover type-cover');box.append(el('small','THECOMMONJOURNAL / '+article.category),el('strong',article.title),el('small','A FRESH PERSPECTIVE'));return box; }
 export function metadata(a){const box=el('div',undefined,'meta');const date=new Date(a.published_at);box.append(el('span',a.category),el('span',Number.isNaN(date.getTime())?'Draft':date.toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})));return box;}
 export function bodyNode(body){const box=el('div',undefined,'article-body');for(const p of body.split(/\n\s*\n/)){if(p.trim())box.append(el(p.startsWith('## ')?'h2':'p',p.startsWith('## ')?p.slice(3):p));}return box;}
+

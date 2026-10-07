@@ -10,7 +10,7 @@ try {
  if(!id||! /^[0-9a-f-]{36}$/i.test(id))throw Error('Profile not found.');
  const db=await database();let {data:p,error}=await db.from('profiles').select('*').eq('id',id).single();
  if(error)throw Error('Profile not found.');
- document.title=p.display_name+' — The Common Jornal';
+ document.title=p.display_name+' — TheCommonJournal';
  const user=await member().catch(()=>null),own=user?.id===id;
  const area=document.querySelector('#profile');
  area.append(avatar(p.display_name,p.avatar_url,'avatar-large'),el('h1',p.display_name,'profile-name'));
@@ -34,4 +34,5 @@ try {
  }
  if(!grid.children.length)grid.append(el('p','No published journals yet.','empty'));
 }catch(err){document.querySelector('#notice').textContent=err.message;}
+
 
