@@ -1,3 +1,5 @@
+import {accountNavigation} from './member-auth.js';
+accountNavigation();
 import {mountEngagement} from './engagement.js';
 import {database, configured,el,cover,metadata,bodyNode} from './shared.js';
 // Keep old index.html bookmarks working while displaying the directory URL.
@@ -36,8 +38,9 @@ const examples=[
     "published_at": "2026-10-03"
   }
 ];
+function authorLink(a){const p=el('p');if(a.owner_id){const link=el('a','By '+a.author,'article-view');link.href='profile.html?user='+a.owner_id;p.append(link);}else{p.textContent='By '+a.author;}return p;}
 async function run(){try{const id=new URLSearchParams(location.search).get('article');let articles;if(!configured){articles=examples;notice.textContent='Preview edition · Sample articles. Connect your publishing account to replace these with your own.';}else{const db=await database();let query=db.from('articles').select('*').eq('status','published');if(id)query=query.eq('id',id);const result=await query.order('published_at',{ascending:false});if(result.error)throw result.error;articles=result.data;}
-if(id){const a=articles.find(a=>a.id===id);const main=document.querySelector('#main');main.replaceChildren();const section=el('article',undefined,'article');const back=el('a','Back to the journal','back');back.href='./';section.append(back);if(!a){section.append(el('h1','Article not found'),el('p','This article may have been unpublished.'));}else{document.title=a.title+' — SadiyaSamreen';document.querySelector('meta[name="description"]').content=a.excerpt;section.append(metadata(a),el('h1',a.title),el('p',a.excerpt,'lede'),el('p','By '+a.author),cover(a),bodyNode(a.body));}main.append(section);if(a)await mountEngagement(a,section);return;}
+if(id){const a=articles.find(a=>a.id===id);const main=document.querySelector('#main');main.replaceChildren();const section=el('article',undefined,'article');const back=el('a','Back to the journal','back');back.href='./';section.append(back);if(!a){section.append(el('h1','Article not found'),el('p','This article may have been unpublished.'));}else{document.title=a.title+' — SadiyaSamreen';document.querySelector('meta[name="description"]').content=a.excerpt;section.append(metadata(a),el('h1',a.title),el('p',a.excerpt,'lede'),authorLink(a),cover(a),bodyNode(a.body));}main.append(section);if(a)await mountEngagement(a,section);return;}
 const grid=document.querySelector('#articles');if(!articles.length){grid.append(el('p','The next good idea is on its way. Check back soon.','empty'));return;}for(const a of articles){const card=el('article',undefined,'card');const link=el('a');link.href='./?article='+encodeURIComponent(a.id);link.append(cover(a),metadata(a),el('h3',a.title),el('p',a.excerpt));card.append(link);grid.append(card);}}
 catch(error){notice.textContent='The journal could not load. Please try again shortly.';console.error(error);}}
 run();

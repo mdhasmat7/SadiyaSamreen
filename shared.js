@@ -1,13 +1,14 @@
 export const config = window.OFFICELIFE_CONFIG;
 export const configured = Boolean(config.supabaseUrl && config.supabasePublicKey && config.adminUserId && config.adminEmail);
-let client;
+let clientPromise;
 export async function database() {
   if (!configured) throw new Error('Complete config.js and the Supabase setup before publishing.');
-  if (!client) {
-    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2.57.4');
-    client = createClient(config.supabaseUrl, config.supabasePublicKey);
+  if (!clientPromise) {
+    clientPromise = import('https://esm.sh/@supabase/supabase-js@2.57.4')
+      .then(({createClient}) => createClient(config.supabaseUrl, config.supabasePublicKey))
+      .catch(error => { clientPromise = null; throw error; });
   }
-  return client;
+  return clientPromise;
 }
 export function el(tag, text, className) { const node=document.createElement(tag); if(text!==undefined)node.textContent=text; if(className)node.className=className; return node; }
 export function safeImage(url) { try { return new URL(url).protocol==='https:' ? url : ''; } catch { return ''; } }
