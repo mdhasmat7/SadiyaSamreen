@@ -15,7 +15,7 @@ try {
  const area=document.querySelector('#profile');
  area.append(avatar(p.display_name,p.avatar_url,'avatar-large'),el('h1',p.display_name,'profile-name'));
  if(p.bio)area.append(el('p',p.bio,'profile-bio'));
- if(own){const edit=el('a','Edit profile photo','profile-photo-link');edit.href='account.html';area.append(edit);}else area.append(await followButton(id));
+ if(own){const edit=el('a','Edit profile photo','profile-photo-link');edit.href='profile-photo.html';area.append(edit);}else area.append(await followButton(id));
  const details=document.querySelector('#personal-details'),heading=el('div',undefined,'details-heading');heading.append(el('h2','Personal details'));
  const list=el('div',undefined,'details-list');details.append(heading,list);
  function renderDetails(){list.replaceChildren();for(const [key,,prefix,symbol] of fields){if(!p[key]?.trim())continue;const row=el('div',undefined,'detail-row'),icon=el('span',symbol,'detail-symbol');icon.setAttribute('aria-hidden','true');row.append(icon,el('span',prefix+p[key]));list.append(row);}if(!list.children.length)list.append(el('p',own?'Add your city, education, and languages.':'No personal details shared yet.','hint'));}
@@ -34,3 +34,4 @@ try {
  }
  if(!grid.children.length)grid.append(el('p','No published journals yet.','empty'));
 }catch(err){document.querySelector('#notice').textContent=err.message;}
+
