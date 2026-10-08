@@ -1,5 +1,5 @@
 import {database,el,cover,configured} from './shared.js';
-import {avatar,formatReactionSummary} from './social.js';
+import {avatar,formatReactionSummary} from './social.js?v=20261008-heart1';
 export async function mountTopJournals(){
  const section=document.querySelector('#top-journals');if(!section)return;
  const heading=el('div',undefined,'top-heading'),text=el('div'),title=el('h2','Top journals'),caption=el('p','Most loved journals published in the last 7 days.');text.append(title,caption);
@@ -12,3 +12,4 @@ export async function mountTopJournals(){
  }
  filter.onchange=load;await load();
 }
+

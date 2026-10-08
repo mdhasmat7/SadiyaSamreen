@@ -20,3 +20,4 @@ function typeCover(article){ const box=el('div',undefined,'cover type-cover');bo
 export function metadata(a){const box=el('div',undefined,'meta');const date=new Date(a.published_at);box.append(el('span',a.category),el('span',Number.isNaN(date.getTime())?'Draft':date.toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})));return box;}
 export function bodyNode(body){const box=el('div',undefined,'article-body');for(const p of body.split(/\n\s*\n/)){if(p.trim())box.append(el(p.startsWith('## ')?'h2':'p',p.startsWith('## ')?p.slice(3):p));}return box;}
 
+

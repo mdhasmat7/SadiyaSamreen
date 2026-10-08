@@ -1,5 +1,5 @@
 import {reportButton} from './reporting.js';
-import {socialActions,avatar} from './social.js';
+import {socialActions,avatar} from './social.js?v=20261008-heart1';
 import {database,el,configured} from './shared.js';
 import {requireMember,member,profile} from './member-auth.js';
 async function guest(){return requireMember();}
@@ -18,4 +18,5 @@ export async function mountEngagement(article,parent){
  form.onsubmit=async e=>{e.preventDefault();send.disabled=true;try{if(!body.value.trim())throw Error('Enter your comment.');await requireMember();const p=await profile();const {error}=await db.from('article_comments').insert({article_id:article.id,name:p.display_name,body:body.value.trim()});if(error)throw error;body.value='';await comments();feedback.textContent='Your comment is published.';document.dispatchEvent(new CustomEvent('journal-comments',{detail:article.id}));}catch(err){feedback.textContent='Could not send your comment: '+err.message;}finally{send.disabled=false;}};
  try{db=await database();viewer=await member();if(viewer){const p=await profile();name.value=p.display_name;}else{signin.hidden=false;form.hidden=true;}await socialActions(article,section,()=>{section.scrollIntoView({behavior:'smooth'});if(viewer)body.focus();});await comments();if(location.hash==='#comments')section.scrollIntoView();}catch{feedback.textContent='Comments are temporarily unavailable.';send.disabled=true;}
 }
+
 

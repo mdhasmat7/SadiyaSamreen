@@ -1,8 +1,8 @@
 import {mountTopJournals} from './top-journals.js';
 import {mountFeed} from './feed.js';
-import {bookmarkButton} from './reader.js';
+import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
-import {writerHeader,socialActions} from './social.js';
+import {writerHeader,socialActions} from './social.js?v=20261008-heart1';
 import {accountNavigation} from './member-auth.js';
 accountNavigation();
 import {mountEngagement} from './engagement.js';
@@ -49,5 +49,6 @@ if(id){const a=articles.find(a=>a.id===id);const main=document.querySelector('#m
 await Promise.all([mountTopJournals(),mountFeed(articles)]);}
 catch(error){notice.textContent='The journal could not load. Please try again shortly.';console.error(error);}}
 run();
+
 
 

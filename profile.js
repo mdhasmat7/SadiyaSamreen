@@ -1,7 +1,7 @@
-import {avatar,followButton,writerHeader,socialActions} from './social.js';
+import {avatar,followButton,writerHeader,socialActions} from './social.js?v=20261008-heart1';
 import {database,el,cover} from './shared.js';
 import {accountNavigation,member,requireMember} from './member-auth.js';
-import {bookmarkButton} from './reader.js';
+import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
 accountNavigation();
 const fields=[['current_city','Current city','Lives in ','⌖',120],['hometown','Hometown','From ','⌂',120],['school','School / College','','🎓',180],['qualification','Course / Qualification','','🎓',180],['languages','Languages','','◎',200]];
@@ -34,5 +34,6 @@ try {
  }
  if(!grid.children.length)grid.append(el('p','No published journals yet.','empty'));
 }catch(err){document.querySelector('#notice').textContent=err.message;}
+
 
 

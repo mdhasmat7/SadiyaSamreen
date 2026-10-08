@@ -11,3 +11,4 @@ try{
   document.querySelector('#photo-picker').append(controls);
  }
 }catch(err){document.querySelector('#notice').textContent=err.message;}
+

@@ -1,0 +1,34 @@
+FULL HEART-LIKE AND CONTEST UPDATE
+Keep your current config.js, CNAME, database and Supabase project.
+
+SUPABASE
+Run likes-update.sql once. Existing positive emoji reactions become likes without deleting their user/article records. Original kinds are retained in previous_kind. Historical excluded dislikes remain excluded. No migration notifications are sent.
+Run contests.sql once. It creates contest tables, public entry/count access, private account vote access, server deadlines, and admin-only contest management.
+If you have not already added reporting, run reporting.sql once. If it is already installed, do not rerun it.
+If you have not already added like/comment notifications, run activity-notifications.sql after reader-update.sql. Your existing reader setup is a prerequisite.
+Do not rerun the original setup/community/social/reader migrations.
+
+GITHUB
+Upload every HTML, JS, CSS and SVG file from this package to the existing repository root, replacing matching files. Leave config.js and CNAME as they are. Wait for Pages deployment and refresh. No existing journals are deleted.
+
+ADMIN
+Visit /admin.html and sign in with your existing admin credentials.
+Go to Contest management > New contest. Fill the prompt/title, description, languages, rules, recognition and opening/entry/voting dates. Dates are entered in your browser's local time. Defaults suggest a seven-day entry period; they are not published automatically.
+Enable Show contest publicly and save. Only the newest created visible contest is featured on the homepage.
+Edit to change settings. Hide to remove it from public view. Close entries or Close voting stops that action immediately. Closing voting displays current Community Choice results; tied top vote totals share the award.
+Choose Editor's Pick from an entered journal in Edit and save. It appears publicly after voting closes.
+To remove an entry, select it in the Editor's Pick dropdown and click Remove selected contest entry. This also removes its contest votes, but keeps its journal.
+Remove contest deletes its entry/vote records, not the underlying journals. A confirmation appears first.
+
+READERS
+Enter contest lets a signed-in member choose one of their own published journals. If none exist, write and publish first, then return to enter. One entry per writer per contest; entry replacement is not offered.
+Contest votes are separate from heart likes. One vote per signed-in account per contest, changeable until the deadline. Login alone does not prove one account per real person; administrator review remains important.
+Published journal content stays editable through the writing page. State in your rules how edits affect judging. Unpublished/deleted journals disappear from eligible displayed entries; deleting a journal removes its entry/votes through database relationships.
+Refresh on the contest page retrieves current vote counts/settings. There are no push or email notifications for contest votes.
+
+POLICIES AND REPORTS
+Footer links include Privacy Policy, Terms, Community Guidelines, and About & Contact. Contact email is mdhasmat7@gmail.com. Privacy information now includes contest entries and votes. Ads are not enabled.
+Reports remain private and appear on the admin page. Review/removal uses the existing moderation tools.
+
+VALIDATION
+Local checks covered like toggling, report submission, login-to-profile routing, contest deadline boundaries/ties, and asset references. SQL execution and live browser/database integration are not verified here. After installation, test with two accounts: enter one journal each, vote, change a vote, verify counts, close voting, and check results. Verify regular likes and notifications as well.
