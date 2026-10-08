@@ -1,5 +1,5 @@
 import {recordView} from './views.js';
-import {mountHomeFeature} from './home-feature.js?v=20261008-feature1';
+import {mountHomeFeature} from './home-feature.js?v=20261008-single-title4';
 import {mountTopJournals} from './top-journals.js';
 import {mountFeed} from './feed.js?v=20261008-editorial1';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';

@@ -82,3 +82,20 @@ body.home-page{--paper:#faf8f3;--ink:#142b50;--muted:#697487;--line:#e5e4df;back
  .home-page .top-cover>.type-cover{padding:31px 9px 8px}
  .home-page .top-cover>.type-cover strong{font-size:18px;line-height:1.4}
 }
+
+/* A journal without a photograph has one title and no duplicate cover. */
+.home-page .featured-text-only{display:block;position:relative;background:linear-gradient(120deg,#f4eee0,#e7ede3);border:1px solid #e0e4d7}
+.home-page .featured-text-only:after{content:'';position:absolute;width:240px;height:240px;border:1px solid #61785526;border-radius:50%;right:-90px;top:-110px;box-shadow:0 0 0 28px #6178550a,0 0 0 56px #61785508;pointer-events:none}
+.home-page .featured-text-only .featured-copy{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;padding:30px 34px}
+.home-page .featured-text-only .featured-copy>.eyebrow,.home-page .featured-text-only h1,.home-page .featured-text-only .featured-excerpt{grid-column:1/3}
+.home-page .featured-text-only h1{margin:0;font-size:clamp(29px,4vw,44px)}
+.home-page .featured-text-only .featured-excerpt{margin:0;max-width:780px}
+.home-page .featured-text-only .featured-writer{margin:0}
+.home-page .featured-text-only .featured-read{align-self:center}
+html[data-theme=night] .home-page .featured-text-only{background:linear-gradient(120deg,#233344,#283d36);border-color:#40554a}
+html[data-theme=night] .home-page .featured-text-only:after{border-color:#bbd5ab35;box-shadow:0 0 0 28px #bbd5ab0a,0 0 0 56px #bbd5ab08}
+html[data-theme=night] .home-page .contest-banner{background:linear-gradient(110deg,#302a1d,#3d3320);color:#fff2cf;border-color:#b99a54}
+html[data-theme=night] .home-page .contest-banner h2{color:#fff2cf}
+html[data-theme=night] .home-page .contest-banner p,html[data-theme=night] .home-page .contest-banner .hint{color:#e9dcb8}
+html[data-theme=night] .home-page .contest-banner .contest-button:not(.primary){color:#ffe1a0;border-color:#c8a461}
+@media(max-width:800px){.home-page .featured-text-only .featured-copy{padding:20px 18px;gap:12px}.home-page .featured-text-only h1{font-size:27px}.home-page .featured-text-only .featured-excerpt{font-size:13px;-webkit-line-clamp:3}.home-page .featured-text-only .featured-writer{font-size:11px}.home-page .featured-text-only .featured-read{font-size:11px}.home-page .featured-text-only:after{width:180px;height:180px;right:-95px;top:-110px}}
