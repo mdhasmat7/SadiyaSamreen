@@ -1,0 +1,9 @@
+ADMIN ANALYTICS UPDATE
+1. If journal view counts are not installed yet, run views.sql once in Supabase SQL Editor. Skip it if already installed.
+2. Run analytics.sql once in Supabase SQL Editor.
+3. Upload every HTML, JavaScript and CSS file from this ZIP into the existing GitHub website folder, replacing matching files. Your config.js and CNAME are not included; keep them.
+4. Wait for GitHub Pages deployment, refresh the website, and open admin.html. Sign in with your admin account. Analytics opens by default; sidebar tabs open your existing journal, contest, report and comment tools.
+
+Counts begin after installation; no historical visitors are reconstructed. Signed-in admin visits are excluded. Test with another browser or an unsigned-in private window, then refresh Analytics. Visitors mean approximate browser counts, not verified people. Days use Qatar time. Page views count website page loads, with five-second refresh throttling. Signed-in/guest cards classify each browser once per day; a browser that signs in during the day becomes signed-in.
+7/30-day charts track daily visitor and page-view counts. Most viewed journals uses lifetime journal reads. CSV export contains aggregate data only. Private raw records are retained for up to 90 days, with cleanup on the next recorded visit.
+SQL and browser deployment require testing in your Supabase project; they have not been executed remotely.
