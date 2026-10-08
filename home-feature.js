@@ -1,8 +1,10 @@
-import {el,cover} from './shared.js';
+import {el,cover,database,configured} from './shared.js';
 import {avatar} from './social.js?v=20261008-heart1';
-export function mountHomeFeature(articles){
+export async function mountHomeFeature(articles){
  const area=document.querySelector('#featured-journal');if(!area)return;
- const article=articles.find(a=>a.cover_url?.startsWith('https://'))||articles[0];
+ area.hidden=true;let article;
+ if(configured){try{const db=await database(),result=await db.rpc('homepage_featured_journal');if(result.error)throw result.error;article=articles.find(a=>a.id===result.data);}catch(error){console.warn('Featured journal unavailable:',error.message);return;}}
+ else{article=articles.find(a=>a.cover_url?.startsWith('https://'))||articles[0];}
  if(!article){area.hidden=true;return;}
  const link=el('a',undefined,'featured-image');link.href='./?article='+encodeURIComponent(article.id);link.setAttribute('aria-label','Read '+article.title);link.append(cover(article));
  const copy=el('div',undefined,'featured-copy');copy.append(el('span','FEATURED JOURNAL','eyebrow'),el('h1',article.title),el('p',article.excerpt,'featured-excerpt'));

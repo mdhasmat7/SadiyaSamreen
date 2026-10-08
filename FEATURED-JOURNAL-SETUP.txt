@@ -1,0 +1,8 @@
+FEATURED JOURNAL ADMIN UPDATE
+1. Run featured-journal.sql in Supabase SQL Editor. It can be safely rerun. First installation preserves the previous automatic featured journal if one is available.
+2. Upload all HTML, JavaScript and CSS files from this ZIP to your existing GitHub website folder, replacing matching files. No changes to config.js or CNAME.
+3. Wait for GitHub Pages deployment and refresh admin.html. Open Featured journal in the sidebar.
+4. Select a published journal, then Set featured journal. Change the selection to replace it. Remove from homepage hides the feature without deleting the journal.
+5. Refresh the homepage to see the change. A draft or deleted journal is not displayed. If removed, another journal is not automatically selected.
+
+The update includes the prior homepage redesign. Existing contest/report/notification/analytics migrations are unchanged. Only featured-journal.sql is new. Local checks passed; Supabase execution and live deployment must be completed in your project.
