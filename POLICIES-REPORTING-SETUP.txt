@@ -1,0 +1,10 @@
+POLICIES AND REPORTING UPDATE
+1. Run reporting.sql once in Supabase SQL Editor. This uses the existing community tables and admin UUID.
+2. Upload every HTML, JS and CSS file in this package to the GitHub repository root, replacing files with the same names. Keep your existing config.js and CNAME.
+3. Wait for deployment and refresh the website.
+4. Test Report on a journal and on a comment while signed in with a reader account.
+5. Open /admin.html with the admin account to review Content reports. Mark resolved or dismiss after review. These actions do not remove content; use the existing journal and comment moderation controls when removal is appropriate.
+Privacy Policy, Terms of Use, Community Guidelines, and About & Contact links are in the footer. The contact address is mdhasmat7@gmail.com, your existing account email. Update it if you want a separate support address.
+The policy describes the current build. Ads are not enabled. Before enabling ads, update advertising disclosures and implement any required consent controls. The operator identity, audience jurisdictions and provider retention settings have not been independently verified, so these pages do not certify legal compliance.
+Existing journals, profiles, comments and reactions are preserved. Reports are private, require login, and are limited to 10 new reports per account per day. Repeated open reports on the same target return the existing report. No report email or push notification is sent.
+Local checks passed. The SQL and live browser integration must be tested in your accounts after upload.
