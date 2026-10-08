@@ -1,0 +1,2 @@
+import {database} from './shared.js';
+export async function recordView(articleId){try{const key='journal-view-'+articleId;let token;try{token=localStorage.getItem(key);}catch{return;}if(!token){token=crypto.randomUUID();try{localStorage.setItem(key,token);}catch{return;}}if(!/^[0-9a-f-]{36}$/i.test(token))return;const db=await database();await db.rpc('record_journal_view',{target_article:articleId,browser_token:token});}catch{/* Reading stays available if view tracking is unavailable. */}}
