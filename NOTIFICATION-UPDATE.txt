@@ -1,0 +1,7 @@
+NOTIFICATION UPDATE
+1. Run activity-notifications.sql in Supabase SQL Editor (after your existing reader-update.sql setup).
+2. Upload reader.js to the GitHub repository root, replacing the existing file.
+3. After deployment, refresh the website with Ctrl+F5. On mobile, reload or close and reopen the tab.
+4. Test with another signed-in account: react to or comment on your published journal. Open the bell on the journal owner's account.
+The bell refreshes on opening, returning to the tab, and every minute while the page is visible. Notifications are website-only. Previous activity is not backfilled. Own reactions/comments do not notify yourself. Reaction changes do not create duplicate alerts.
+Existing journals and notifications are preserved. SQL must be executed in your Supabase account; live database validation has not been performed here.
