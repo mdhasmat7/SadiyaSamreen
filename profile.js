@@ -1,10 +1,10 @@
 import {avatar,followButton,writerHeader,socialActions} from './social.js?v=20261008-heart1';
 import {database,el,cover} from './shared.js';
-import {accountNavigation,member,requireMember} from './member-auth.js';
+import {member,requireMember} from './member-auth.js';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
-import {mountFollowerCount} from './follower-count.js?v=20261010-1';
-accountNavigation();
+import {mountFollowerCount} from './follower-count.js?v=20261010-profile2';
+import {mountWriterDashboard} from './writer-dashboard.js?v=20261010-profile2';
 const fields=[['current_city','Current city','Lives in ','⌖',120],['hometown','Hometown','From ','⌂',120],['school','School / College','','🎓',180],['qualification','Course / Qualification','','🎓',180],['languages','Languages','','◎',200]];
 try {
  const id=new URLSearchParams(location.search).get('user');
@@ -14,10 +14,13 @@ try {
  document.title=p.display_name+' — TheCommonJournal';
  const user=await member().catch(()=>null),own=user?.id===id;
  const area=document.querySelector('#profile');
- area.append(avatar(p.display_name,p.avatar_url,'avatar-large'),el('h1',p.display_name,'profile-name'));
- await mountFollowerCount(area,id);
+ const identity=el('div',undefined,'profile-identity'),info=el('div',undefined,'profile-identity-info'),stats=el('div',undefined,'profile-stats'),posts=el('p','','profile-post-count');
+ posts.hidden=true;stats.append(posts);info.append(el('h1',p.display_name,'profile-name'),stats);identity.append(avatar(p.display_name,p.avatar_url,'avatar-large'),info);area.append(identity);
+ await mountFollowerCount(stats,id,true);
+ try{const r=await db.from('articles').select('id',{count:'exact',head:true}).eq('owner_id',id).eq('status','published');if(r.error)throw r.error;posts.textContent=r.count.toLocaleString()+'\n'+(r.count===1?'post':'posts');posts.hidden=false;}catch(error){console.warn('Post count unavailable:',error.message);}
  if(p.bio)area.append(el('p',p.bio,'profile-bio'));
  if(own){const edit=el('a','Edit profile photo','profile-photo-link');edit.href='profile-photo.html';area.append(edit);}else area.append(await followButton(id));
+ if(own)await mountWriterDashboard(area);
  const details=document.querySelector('#personal-details'),heading=el('div',undefined,'details-heading');heading.append(el('h2','Personal details'));
  const list=el('div',undefined,'details-list');details.append(heading,list);
  function renderDetails(){list.replaceChildren();for(const [key,,prefix,symbol] of fields){if(!p[key]?.trim())continue;const row=el('div',undefined,'detail-row'),icon=el('span',symbol,'detail-symbol');icon.setAttribute('aria-hidden','true');row.append(icon,el('span',prefix+p[key]));list.append(row);}if(!list.children.length)list.append(el('p',own?'Add your city, education, and languages.':'No personal details shared yet.','hint'));}
