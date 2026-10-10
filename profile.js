@@ -4,7 +4,7 @@ import {member,requireMember} from './member-auth.js';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
 import {mountFollowerCount} from './follower-count.js?v=20261010-profile2';
-import {mountWriterDashboard} from './writer-dashboard.js?v=20261010-profile2';
+import {mountWriterDashboard} from './writer-dashboard.js?v=20261010-lifetime3';
 const fields=[['current_city','Current city','Lives in ','⌖',120],['hometown','Hometown','From ','⌂',120],['school','School / College','','🎓',180],['qualification','Course / Qualification','','🎓',180],['languages','Languages','','◎',200]];
 try {
  const id=new URLSearchParams(location.search).get('user');
