@@ -11,5 +11,6 @@ export async function mountHomeFeature(articles){
  const writer=el('a',undefined,'featured-writer');writer.href=article.owner_id?'profile.html?user='+encodeURIComponent(article.owner_id):link.href;writer.append(avatar(article.profiles?.display_name||article.author,article.profiles?.avatar_url),el('span',article.profiles?.display_name||article.author));
  const read=el('a','Read journal →','featured-read');read.href=link.href;copy.append(writer,read);
  const hasPhoto=Boolean(safeImage(article.cover_url));area.classList.toggle('featured-text-only',!hasPhoto);
- area.replaceChildren(...(hasPhoto?[copy,link]:[copy]));area.hidden=false;
+ const cardLink=el('a',undefined,'featured-card-link');cardLink.href=link.href;cardLink.tabIndex=-1;cardLink.setAttribute('aria-hidden','true');
+ area.replaceChildren(...(hasPhoto?[copy,link,cardLink]:[copy,cardLink]));area.hidden=false;
 }
