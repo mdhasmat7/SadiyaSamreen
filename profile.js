@@ -3,6 +3,7 @@ import {database,el,cover} from './shared.js';
 import {accountNavigation,member,requireMember} from './member-auth.js';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
+import {mountFollowerCount} from './follower-count.js?v=20261010-1';
 accountNavigation();
 const fields=[['current_city','Current city','Lives in ','⌖',120],['hometown','Hometown','From ','⌂',120],['school','School / College','','🎓',180],['qualification','Course / Qualification','','🎓',180],['languages','Languages','','◎',200]];
 try {
@@ -14,6 +15,7 @@ try {
  const user=await member().catch(()=>null),own=user?.id===id;
  const area=document.querySelector('#profile');
  area.append(avatar(p.display_name,p.avatar_url,'avatar-large'),el('h1',p.display_name,'profile-name'));
+ await mountFollowerCount(area,id);
  if(p.bio)area.append(el('p',p.bio,'profile-bio'));
  if(own){const edit=el('a','Edit profile photo','profile-photo-link');edit.href='profile-photo.html';area.append(edit);}else area.append(await followButton(id));
  const details=document.querySelector('#personal-details'),heading=el('div',undefined,'details-heading');heading.append(el('h2','Personal details'));
