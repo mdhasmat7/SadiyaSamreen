@@ -1,5 +1,5 @@
 import {journalCardContent} from './journal-card-content.js?v=20261010-shared1';
-import {avatar,followButton,writerHeader,socialActions} from './social.js?v=20261010-cardbadges1';
+import {avatar,followButton,writerHeader,socialActions} from './social.js?v=20261010-aligned3';
 import {database,el,cover} from './shared.js';
 import {member,requireMember} from './member-auth.js';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';

@@ -6,7 +6,7 @@ export const choices=[['like','❤️','Like']];
 export function avatar(name,url,size=''){const box=el('span',undefined,'user-avatar '+size);const first=Array.from((name||'Member').trim())[0]||'M';box.textContent=first.toLocaleUpperCase();box.setAttribute('aria-label',name||'Member');if(safeImage(url)){const img=el('img');img.src=url;img.alt='';img.referrerPolicy='no-referrer';img.onerror=()=>img.remove();box.append(img);}return box;}
 export async function writerHeader(a,p={}){
  const row=el('div',undefined,'writer-header'),identity=el('div',undefined,'writer-link'),href=a.owner_id?'profile.html?user='+encodeURIComponent(a.owner_id):'./',photo=el('a',undefined,'writer-photo-link');photo.href=href;photo.setAttribute('aria-label','View '+(p.display_name||a.author)+' profile');photo.append(avatar(p.display_name||a.author,p.avatar_url));
- const text=el('span',undefined,'writer-identity-text'),nameLine=el('span',undefined,'writer-name-line'),name=el('a');name.href=href;name.append(el('strong',p.display_name||a.author));nameLine.append(name);
+ const text=el('span',undefined,'writer-identity-text'),nameLine=el('span',undefined,'writer-name-line'),name=el('a');name.href=href;name.title=p.display_name||a.author;name.append(el('strong',p.display_name||a.author));nameLine.append(name);
  if(a.owner_id){const badge=await cardWriterBadge(a.owner_id);if(badge)nameLine.append(badge);}
  text.append(nameLine,el('small',new Date(a.published_at).toLocaleDateString('en',{month:'short',day:'numeric',year:'numeric'})));identity.append(photo,text);row.append(identity);if(a.owner_id)row.append(await followButton(a.owner_id));return row;
 }

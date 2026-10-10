@@ -19,10 +19,11 @@ html[data-theme=night] :is(.home-page,.profile-page) .journal-category{backgroun
  :is(.home-page,.profile-page) .feed-card .writer-link strong{font-size:12px}
  :is(.home-page,.profile-page) .feed-card .writer-link small{font-size:10px}
  :is(.home-page,.profile-page) .feed-card .writer-photo-link .user-avatar{width:32px;height:32px;font-size:18px}
- :is(.home-page,.profile-page) .feed-card .writer-tools .follow-button{font-size:11px;padding:5px 8px}
+ :is(.home-page,.profile-page) .feed-card .writer-tools .follow-button{font-size:10px;padding:5px 7px}
  :is(.home-page,.profile-page) .feed-card .post-content{margin:10px 0}
  :is(.home-page,.profile-page) .feed-card .post-content.has-thumbnail{grid-template-columns:minmax(0,1fr) 94px;gap:8px 10px}
  :is(.home-page,.profile-page) .feed-card .post-content h3{font-size:22px}
  :is(.home-page,.profile-page) .feed-card .post-content p{font-size:12px;line-height:1.65}
  :is(.home-page,.profile-page) .feed-card .post-content .cover{width:94px;height:105px}
 }
+

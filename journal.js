@@ -1,13 +1,13 @@
 import {recordView} from './views.js';
 import {mountHomeFeature} from './home-feature.js?v=20261010-cardlink1';
 import {mountTopJournals} from './top-journals.js';
-import {mountFeed} from './feed.js?v=20261010-sharedcards2';
+import {mountFeed} from './feed.js?v=20261010-aligned3';
 import {bookmarkButton} from './reader.js?v=20261008-contest1';
 import {readingMinutes} from './reader-utils.js';
-import {writerHeader,socialActions} from './social.js?v=20261010-cardbadges1';
+import {writerHeader,socialActions} from './social.js?v=20261010-aligned3';
 import {accountNavigation} from './member-auth.js';
 accountNavigation();
-import {mountEngagement} from './engagement.js?v=20261010-cardbadges1';
+import {mountEngagement} from './engagement.js?v=20261010-aligned3';
 import {database, configured,el,cover,metadata,bodyNode} from './shared.js';
 // Keep old index.html bookmarks working while displaying the directory URL.
 if(location.pathname.endsWith('/index.html')){
