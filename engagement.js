@@ -1,5 +1,5 @@
 import {reportButton} from './reporting.js';
-import {socialActions,avatar} from './social.js?v=20261008-heart1';
+import {socialActions,avatar} from './social.js?v=20261010-cardbadges1';
 import {database,el,configured} from './shared.js';
 import {requireMember,member,profile} from './member-auth.js';
 async function guest(){return requireMember();}
