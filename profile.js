@@ -1,3 +1,4 @@
+import {journalCardContent} from './journal-card-content.js?v=20261010-shared1';
 import {avatar,followButton,writerHeader,socialActions} from './social.js?v=20261010-cardbadges1';
 import {database,el,cover} from './shared.js';
 import {member,requireMember} from './member-auth.js';
@@ -35,7 +36,7 @@ try {
  }
  const grid=document.querySelector('#articles');let offset=0;
  while(true){const result=await db.from('articles').select('*').eq('owner_id',id).eq('status','published').order('published_at',{ascending:false}).order('id').range(offset,offset+199);if(result.error)throw result.error;
-  for(const a of result.data){const card=el('article',undefined,'feed-card'),header=await writerHeader(a,p),tools=el('div',undefined,'writer-tools'),follow=header.querySelector('.follow-button');if(follow)tools.append(follow);tools.append(await bookmarkButton(a));header.append(tools);const date=header.querySelector('small');if(date)date.textContent+=' · '+readingMinutes(a.body)+' min read';const link=el('a',undefined,'post-content');link.href='./?article='+encodeURIComponent(a.id);link.append(el('h3',a.title),el('p',a.excerpt),cover(a));card.append(header,link);grid.append(card);await socialActions(a,card);}
+  for(const a of result.data){const card=el('article',undefined,'feed-card'),header=await writerHeader(a,p),tools=el('div',undefined,'writer-tools'),follow=header.querySelector('.follow-button');if(follow)tools.append(follow);tools.append(await bookmarkButton(a));header.append(tools);const date=header.querySelector('small');if(date)date.textContent+=' · '+readingMinutes(a.body)+' min read';const link=journalCardContent(a);card.append(header,link);grid.append(card);await socialActions(a,card);}
   if(result.data.length<200)break;offset+=200;
  }
  if(!grid.children.length)grid.append(el('p','No published journals yet.','empty'));

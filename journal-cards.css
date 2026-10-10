@@ -1,0 +1,28 @@
+/* Shared homepage and public-profile journal cards. */
+:is(.home-page,.profile-page) .feed-card{padding:20px;background:#fffdf9;border:1px solid var(--line);border-radius:10px;min-width:0}
+:is(.home-page,.profile-page) .feed-card:nth-child(3n+2){background:#f2f5ef}
+:is(.home-page,.profile-page) .feed-card:nth-child(3n+3){background:#fbf1ee}
+:is(.home-page,.profile-page) .feed-card .post-content{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:16px 0}
+:is(.home-page,.profile-page) .feed-card .post-content.has-thumbnail{grid-template-columns:minmax(0,1fr) 165px;grid-template-rows:auto 1fr;column-gap:20px}
+:is(.home-page,.profile-page) .feed-card .post-content h3{font-size:27px;line-height:1.35;margin:0;overflow-wrap:anywhere}
+:is(.home-page,.profile-page) .feed-card .post-content p{font-size:15px;line-height:1.7;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+:is(.home-page,.profile-page) .feed-card .post-content .cover{grid-column:2;grid-row:1/3;width:165px;height:145px;margin:0}
+:is(.home-page,.profile-page) .journal-category{align-self:start;justify-self:start;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#647261;border-radius:5px;background:#e9efe3;padding:4px 8px}
+html[data-theme=night] :is(.home-page,.profile-page) .feed-card{background:#1b283c}
+html[data-theme=night] :is(.home-page,.profile-page) .feed-card:nth-child(3n+2){background:#24352f}
+html[data-theme=night] :is(.home-page,.profile-page) .feed-card:nth-child(3n+3){background:#352c35}
+html[data-theme=night] :is(.home-page,.profile-page) .journal-category{background:#344b3d;color:#e0ebda}
+@media(max-width:800px){
+ :is(.home-page,.profile-page) .journal .grid,:is(.home-page,.profile-page) .profile-journals .grid{gap:14px}
+ :is(.home-page,.profile-page) .feed-card{padding:13px}
+ :is(.home-page,.profile-page) .feed-card .writer-header{margin-bottom:10px}
+ :is(.home-page,.profile-page) .feed-card .writer-link strong{font-size:12px}
+ :is(.home-page,.profile-page) .feed-card .writer-link small{font-size:10px}
+ :is(.home-page,.profile-page) .feed-card .writer-photo-link .user-avatar{width:32px;height:32px;font-size:18px}
+ :is(.home-page,.profile-page) .feed-card .writer-tools .follow-button{font-size:11px;padding:5px 8px}
+ :is(.home-page,.profile-page) .feed-card .post-content{margin:10px 0}
+ :is(.home-page,.profile-page) .feed-card .post-content.has-thumbnail{grid-template-columns:minmax(0,1fr) 94px;gap:8px 10px}
+ :is(.home-page,.profile-page) .feed-card .post-content h3{font-size:22px}
+ :is(.home-page,.profile-page) .feed-card .post-content p{font-size:12px;line-height:1.65}
+ :is(.home-page,.profile-page) .feed-card .post-content .cover{width:94px;height:105px}
+}
