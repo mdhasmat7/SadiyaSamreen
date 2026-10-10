@@ -8,3 +8,20 @@
 .view-count{display:inline-flex;align-items:center;gap:7px;border:0;padding:6px 2px;font-size:13px;color:var(--muted);opacity:1!important;cursor:default!important;white-space:nowrap}.view-count svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}.view-count:hover{background:transparent}.social-bar .social-action:nth-child(3){margin-left:auto;order:2}.view-count{order:1}@media(max-width:760px){.social-bar{gap:13px}.view-count{font-size:12px;gap:5px}.view-count svg{width:18px;height:18px}}
 
 .writer-photo-link{display:flex;flex-shrink:0}.writer-identity-text{min-width:0}.writer-name-line{display:flex;align-items:center;flex-wrap:wrap;gap:5px}.writer-name-line>a:first-child{min-width:0}.card-writer-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;min-height:30px;border-radius:5px;flex-shrink:0}.card-writer-badge .writer-badge{width:21px;height:21px;display:block;filter:drop-shadow(0 1px 1px #0003)}.card-writer-badge:hover{background:var(--hover,#edf4ff)}.card-writer-badge:focus-visible{outline:2px solid #1877f2;outline-offset:2px}@media(max-width:760px){.writer-name-line{gap:3px}.card-writer-badge{min-width:28px;min-height:28px}.card-writer-badge .writer-badge{width:19px;height:19px}.writer-header .writer-link{flex:1;min-width:0}}
+/* Keep mobile writer names and badges together instead of squeezing them. */
+@media(max-width:600px){
+ .writer-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;align-items:center}
+ .writer-header>.writer-link{grid-column:1/-1;width:100%;gap:10px;min-width:0}
+ .writer-header .writer-photo-link .user-avatar{width:36px;height:36px;font-size:19px}
+ .writer-header .writer-identity-text{flex:1;min-width:0}
+ .writer-header .writer-name-line{flex-wrap:nowrap;gap:5px}
+ .writer-header .writer-name-line>a:first-child{min-width:0;max-width:calc(100% - 34px)}
+ .writer-header .writer-name-line strong{font-size:14px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .writer-header .writer-identity-text small{font-size:11px;line-height:1.5}
+ .writer-header .card-writer-badge{min-width:28px;min-height:28px;flex-shrink:0}
+ .writer-header .card-writer-badge .writer-badge{width:20px;height:20px}
+ .writer-header>.writer-tools,.writer-header>.follow-button{grid-column:2;justify-self:end;margin:0}
+ .writer-header .writer-tools{gap:8px}
+ .writer-header .follow-button{font-size:12px;padding:5px 10px;min-height:32px}
+ .writer-header .bookmark-button{width:32px;height:32px;padding:6px}
+}
